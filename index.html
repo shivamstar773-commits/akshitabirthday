@@ -9,9 +9,7 @@
 
 <style>
 
-:root{
- --dark:#aa0022;
-}
+:root{ --dark:#aa0022; }
 
 body{
  margin:0;
@@ -25,28 +23,14 @@ body{
  color:#333;
 }
 
-/* Floating subtle hearts */
-body::before{
- content:"";
- position:fixed;
- width:100%;
- height:100%;
- left:0;
- top:0;
- background:url('https://i.imgur.com/2b9hQ9B.png');
- opacity:.12;
-}
-
-/*********** SNOW ***********/
-.snowflake{
+/******** FLOATING HEARTS BACKGROUND (no image needed) *********/
+.hearts span{
  position:fixed;
  top:-10px;
- color:white;
- font-size:1.4em;
+ color:rgba(255,255,255,.8);
+ font-size:20px;
  animation:fall linear infinite;
- z-index:2;
 }
-
 @keyframes fall{
  to{ transform:translateY(110vh); }
 }
@@ -59,13 +43,12 @@ body::before{
  text-align:center;
  border-radius:25px;
  backdrop-filter:blur(8px);
- background:rgba(255,255,255,.9);
+ background:rgba(255,255,255,.92);
  border:2px solid #fff;
  box-shadow:0 20px 50px rgba(255,0,64,.4);
  z-index:10;
 }
 
-/******** TEXT ********/
 h1{
  font-family:'Dancing Script',cursive;
  font-size:3rem;
@@ -94,69 +77,37 @@ h1{
  cursor:pointer;
  transition:.3s;
 }
-
 .btn:hover{ transform:scale(1.08); }
 
 /******** CAKE *********/
-.cake-container{
- margin:25px 0;
- position:relative;
- display:inline-block;
-}
-
+.cake-container{ margin:25px 0; position:relative; display:inline-block; }
 .cake-glow{
- position:absolute;
- top:-40px;
- left:50%;
- transform:translateX(-50%);
- width:170px;
- height:170px;
- border-radius:50%;
+ position:absolute; top:-40px; left:50%; transform:translateX(-50%);
+ width:170px; height:170px; border-radius:50%;
  background:radial-gradient(circle,rgba(255,255,200,.6),rgba(255,255,200,0));
- filter:blur(20px);
- animation:pulse 1.5s infinite alternate;
+ filter:blur(20px); animation:pulse 1.5s infinite alternate;
 }
-
-@keyframes pulse{
- from{opacity:.6}
- to{opacity:1}
-}
-
-.cake-img{
- width:130px;
-}
+@keyframes pulse{ from{opacity:.6} to{opacity:1} }
+.cake-img{ width:130px; }
 
 /******** CANDLES **********/
 .candle-container{
- position:absolute;
- top:-20px;
- left:50%;
- transform:translateX(-50%);
- display:flex;
- gap:10px;
+ position:absolute; top:-20px; left:50%; transform:translateX(-50%);
+ display:flex; gap:10px;
 }
-
 .flame{
- width:15px;
- height:25px;
+ width:15px; height:25px;
  background:radial-gradient(circle,#fffca3,#ff9500);
  border-radius:50% 50% 30% 30%;
  box-shadow:0 0 15px #fff7a8;
  animation:flick .3s infinite alternate;
 }
-
-@keyframes flick{
- from{transform:scale(1)}
- to{transform:scale(1.2) rotate(2deg)}
-}
-
+@keyframes flick{ from{transform:scale(1)} to{transform:scale(1.2) rotate(2deg)} }
 .flame-off{ opacity:0; transition:.6s; }
 
 /******** PHOTO *********/
 .photo-frame{
- width:160px;
- height:160px;
- border-radius:50%;
+ width:160px;height:160px;border-radius:50%;
  border:6px solid white;
  box-shadow:0 10px 25px rgba(0,0,0,.25);
  object-fit:cover;
@@ -182,10 +133,12 @@ h1{
 }
 
 </style>
-
 </head>
 
 <body>
+
+<!-- HEART BACKGROUND -->
+<div class="hearts"></div>
 
 <!-- MUSIC -->
 <audio id="bgMusic" loop>
@@ -196,7 +149,7 @@ h1{
 <!-- PAGE 1 -->
 <div id="page1" class="card fade-in">
  <h1>Happy 22nd Birthday Akshita ❤️</h1>
- <p>Make a wish, birthday lady ❄️</p>
+ <p>Make a wish, birthday queen ❄️</p>
 
  <div class="cake-container">
   <div class="cake-glow"></div>
@@ -221,10 +174,8 @@ h1{
  <h1>Letter For You 💌</h1>
 
  <div id="closedEnv">
-
-  <!-- Cute Cat Kiss (GIPHY guaranteed works) -->
-  <img src="https://tenor.com/nJ5BEOKq8wc.gif" width="180" style="border-radius:12px;">
-  
+  <!-- CUTE CAT KISS - STABLE -->
+  <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="180" style="border-radius:12px;">
   <button class="btn" onclick="openLetter()">Read Letter 💖</button>
  </div>
 
@@ -232,7 +183,8 @@ h1{
   <div class="letter-text">
    <b>My Dearest Akshita,</b><br><br>
    Happy 22nd Birthday! ❄️  
-   You're such a genuine person, love your company always. Especially your voice notes, hehe. Keep smiling and be kind and cutie patotie like this. Your smile is literally like a sweet sunshine keep it up always. 
+   You are the warmth in my winter, the smile to my day and the magic in my moments.  
+   You deserve happiness, peace, laughter and endless love always.
    <br><br>
    Keep shining beautiful ❤️
   </div>
@@ -250,30 +202,29 @@ h1{
  <div class="gif-container">
 
   <!-- Flowers -->
-  <img src="https://media.giphy.com/media/26FLdmIp6wJr91JAI/giphy.gif">
+  <img src="https://media.giphy.com/media/3o6Zt8zb1PqVLZ9a0Y/giphy.gif">
 
-  <!-- Chocolate Love -->
-  <img src="https://tenor.com/nJ5BEOKq8wc.gif">
+  <!-- Chocolate -->
+  <img src="https://media.giphy.com/media/xT77XZrTKOxycjaYvK/giphy.gif">
 
  </div>
 
- <p style="opacity:.6">You deserve all the LOVE.</p>
+ <p style="opacity:.6">Forever yours.</p>
 </div>
 
 
-<!-- SNOW + SCRIPT -->
 <script>
-function snow(){
- const s=document.createElement("div");
- s.className="snowflake";
- s.textContent="❄";
- s.style.left=Math.random()*100+"vw";
- s.style.animationDuration=Math.random()*3+2+"s";
- s.style.opacity=Math.random();
- document.body.appendChild(s);
- setTimeout(()=>s.remove(),5000);
+/******** HEARTS *********/
+function hearts(){
+ const h=document.createElement("span");
+ h.textContent="❤️";
+ h.style.left=Math.random()*100+"vw";
+ h.style.animationDuration=Math.random()*3+3+"s";
+ document.querySelector(".hearts").appendChild(h);
+ setTimeout(()=>h.remove(),5000);
 }
-setInterval(snow,200);
+setInterval(hearts,250);
+
 
 /******** NAV *********/
 function goPage(n){
@@ -292,7 +243,6 @@ function blow(){
  blowBtn.style.display="none";
  toLetter.classList.remove("hidden");
  alert("🎉 Happy Birthday Akshita ❤️");
-
  document.getElementById("bgMusic").play().catch(()=>{});
 }
 
