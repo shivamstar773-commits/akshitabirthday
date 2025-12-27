@@ -11,6 +11,7 @@
 
 :root{ --dark:#aa0022; }
 
+/******** BACKGROUND *********/
 body{
  margin:0;
  height:100vh;
@@ -23,16 +24,28 @@ body{
  color:#333;
 }
 
-/******** FLOATING HEARTS BACKGROUND (no image needed) *********/
+/******** FLOATING HEARTS *********/
 .hearts span{
  position:fixed;
  top:-10px;
  color:rgba(255,255,255,.8);
- font-size:20px;
+ font-size:22px;
  animation:fall linear infinite;
 }
 @keyframes fall{
- to{ transform:translateY(110vh); }
+ to{ transform:translateY(110vh) rotate(360deg); opacity:0; }
+}
+
+/******** SNOW *********/
+.snowflake{
+ position:fixed;
+ top:-10px;
+ color:white;
+ font-size:18px;
+ animation:fall2 linear infinite;
+}
+@keyframes fall2{
+ to{ transform:translateY(110vh); opacity:0; }
 }
 
 /******** CARD *********/
@@ -57,14 +70,13 @@ h1{
 }
 
 .hidden{display:none;}
-.fade-in{ animation:fade .9s forwards; }
-
+.fade-in{animation:fade .9s forwards;}
 @keyframes fade{
  from{opacity:0;transform:translateY(20px)}
  to{opacity:1;transform:translateY(0)}
 }
 
-/******** BUTTON ********/
+/******** BUTTON *********/
 .btn{
  margin-top:18px;
  padding:12px 30px;
@@ -137,8 +149,9 @@ h1{
 
 <body>
 
-<!-- HEART BACKGROUND -->
+<!-- BACKGROUND EFFECTS -->
 <div class="hearts"></div>
+<div class="snow"></div>
 
 <!-- MUSIC -->
 <audio id="bgMusic" loop>
@@ -174,7 +187,7 @@ h1{
  <h1>Letter For You 💌</h1>
 
  <div id="closedEnv">
-  <!-- CUTE CAT KISS - STABLE -->
+  <!-- stable cat kiss gif -->
   <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="180" style="border-radius:12px;">
   <button class="btn" onclick="openLetter()">Read Letter 💖</button>
  </div>
@@ -183,9 +196,8 @@ h1{
   <div class="letter-text">
    <b>My Dearest Akshita,</b><br><br>
    Happy 22nd Birthday! ❄️  
-   You're such a genuine person, love your company always. 
-   Especially your voice notes, hehe. Keep smiling and be kind and cutie patotie like this. Your smile is literally like a sweet sunshine keep it up always.
-
+   You're such a genuine person, love your company always. Especially your voice notes, hehe. 
+   Keep smiling and be a kind cutie patotie like this. Your smile is literally like a sweet sunshine keep it up always.
    <br><br>
    Keep shining beautiful ❤️
   </div>
@@ -205,7 +217,7 @@ h1{
   <!-- Flowers -->
   <img src="https://media.giphy.com/media/3o6Zt8zb1PqVLZ9a0Y/giphy.gif">
 
-  <!-- Chocolate -->
+  <!-- Chocolates -->
   <img src="https://media.giphy.com/media/xT77XZrTKOxycjaYvK/giphy.gif">
 
  </div>
@@ -226,6 +238,17 @@ function hearts(){
 }
 setInterval(hearts,250);
 
+/******** SNOW *********/
+function snow(){
+ const s=document.createElement("div");
+ s.className="snowflake";
+ s.textContent="❄";
+ s.style.left=Math.random()*100+"vw";
+ s.style.animationDuration=Math.random()*3+3+"s";
+ document.body.appendChild(s);
+ setTimeout(()=>s.remove(),5000);
+}
+setInterval(snow,200);
 
 /******** NAV *********/
 function goPage(n){
@@ -257,4 +280,3 @@ function openLetter(){
 
 </body>
 </html>
-
