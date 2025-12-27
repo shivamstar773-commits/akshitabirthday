@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 22nd Birthday Akshita ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+ --dark:#aa0022;
+}
+
+body{
+ margin:0;
+ height:100vh;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ font-family:'Poppins',sans-serif;
+ background:radial-gradient(circle at top,#ff9a9e,#ff0844);
+ overflow:hidden;
+ color:#333;
+}
+
+/* Floating subtle hearts */
+body::before{
+ content:"";
+ position:fixed;
+ width:100%;
+ height:100%;
+ left:0;
+ top:0;
+ background:url('https://i.imgur.com/2b9hQ9B.png');
+ opacity:.12;
+}
+
+/*********** SNOW ***********/
+.snowflake{
+ position:fixed;
+ top:-10px;
+ color:white;
+ font-size:1.4em;
+ animation:fall linear infinite;
+ z-index:2;
+}
+
+@keyframes fall{
+ to{ transform:translateY(110vh); }
+}
+
+/******** CARD *********/
+.card{
+ width:90%;
+ max-width:430px;
+ padding:35px 25px;
+ text-align:center;
+ border-radius:25px;
+ backdrop-filter:blur(8px);
+ background:rgba(255,255,255,.9);
+ border:2px solid #fff;
+ box-shadow:0 20px 50px rgba(255,0,64,.4);
+ z-index:10;
+}
+
+/******** TEXT ********/
+h1{
+ font-family:'Dancing Script',cursive;
+ font-size:3rem;
+ color:var(--dark);
+ margin:0 0 10px;
+}
+
+.hidden{display:none;}
+.fade-in{ animation:fade .9s forwards; }
+
+@keyframes fade{
+ from{opacity:0;transform:translateY(20px)}
+ to{opacity:1;transform:translateY(0)}
+}
+
+/******** BUTTON ********/
+.btn{
+ margin-top:18px;
+ padding:12px 30px;
+ font-size:1.1rem;
+ border-radius:50px;
+ border:none;
+ background:linear-gradient(45deg,#ff0844,#ff2d55);
+ color:white;
+ box-shadow:0 8px 18px rgba(255,0,64,.4);
+ cursor:pointer;
+ transition:.3s;
+}
+
+.btn:hover{ transform:scale(1.08); }
+
+/******** CAKE *********/
+.cake-container{
+ margin:25px 0;
+ position:relative;
+ display:inline-block;
+}
+
+.cake-glow{
+ position:absolute;
+ top:-40px;
+ left:50%;
+ transform:translateX(-50%);
+ width:170px;
+ height:170px;
+ border-radius:50%;
+ background:radial-gradient(circle,rgba(255,255,200,.6),rgba(255,255,200,0));
+ filter:blur(20px);
+ animation:pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse{
+ from{opacity:.6}
+ to{opacity:1}
+}
+
+.cake-img{
+ width:130px;
+}
+
+/******** CANDLES **********/
+.candle-container{
+ position:absolute;
+ top:-20px;
+ left:50%;
+ transform:translateX(-50%);
+ display:flex;
+ gap:10px;
+}
+
+.flame{
+ width:15px;
+ height:25px;
+ background:radial-gradient(circle,#fffca3,#ff9500);
+ border-radius:50% 50% 30% 30%;
+ box-shadow:0 0 15px #fff7a8;
+ animation:flick .3s infinite alternate;
+}
+
+@keyframes flick{
+ from{transform:scale(1)}
+ to{transform:scale(1.2) rotate(2deg)}
+}
+
+.flame-off{ opacity:0; transition:.6s; }
+
+/******** PHOTO *********/
+.photo-frame{
+ width:160px;
+ height:160px;
+ border-radius:50%;
+ border:6px solid white;
+ box-shadow:0 10px 25px rgba(0,0,0,.25);
+ object-fit:cover;
+}
+
+/******** LETTER *********/
+.letter-text{
+ background:#ffe6ec;
+ padding:22px;
+ border-radius:12px;
+ border:1px dashed var(--dark);
+ color:#333;
+ line-height:1.6;
+ font-size:.95rem;
+ text-align:left;
+}
+
+/******** GIF *********/
+.gif-container img{
+ width:120px;
+ border-radius:10px;
+ margin:7px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+ <source src="https://files.catbox.moe/rg0m6s.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- PAGE 1 -->
+<div id="page1" class="card fade-in">
+ <h1>Happy 22nd Birthday Akshita ❤️</h1>
+ <p>Make a wish, birthday lady ❄️</p>
+
+ <div class="cake-container">
+  <div class="cake-glow"></div>
+
+  <div class="candle-container">
+   <div class="flame" id="f1"></div>
+   <div class="flame" id="f2"></div>
+   <div class="flame" id="f3"></div>
+  </div>
+
+  <img src="https://img.icons8.com/color/160/birthday-cake.png" class="cake-img">
+ </div>
+
+ <button class="btn" id="blowBtn" onclick="blow()">Blow Me 🌬️</button>
+ <button class="btn hidden" id="toLetter" onclick="goPage(2)">Open Surprise 🎁</button>
+</div>
+
+
+<!-- PAGE 2 -->
+<div id="page2" class="card hidden">
+ <img src="akshita.jpg" class="photo-frame" onerror="this.style.display='none'">
+ <h1>Letter For You 💌</h1>
+
+ <div id="closedEnv">
+
+  <!-- Cute Cat Kiss (GIPHY guaranteed works) -->
+  <img src="https://tenor.com/nJ5BEOKq8wc.gif" width="180" style="border-radius:12px;">
+  
+  <button class="btn" onclick="openLetter()">Read Letter 💖</button>
+ </div>
+
+ <div id="openEnv" class="hidden">
+  <div class="letter-text">
+   <b>My Dearest Akshita,</b><br><br>
+   Happy 22nd Birthday! ❄️  
+   You're such a genuine person, love your company always. Especially your voice notes, hehe. Keep smiling and be kind and cutie patotie like this. Your smile is literally like a sweet sunshine keep it up always. 
+   <br><br>
+   Keep shining beautiful ❤️
+  </div>
+
+  <button class="btn" onclick="goPage(3)">Keep Smiling 😊</button>
+ </div>
+</div>
+
+
+<!-- PAGE 3 -->
+<div id="page3" class="card hidden">
+ <h1>Have a Magical Year Ahead</h1>
+ <p>Flowers 🌸 Chocolates 🍫 & Lots of Love ❤️</p>
+
+ <div class="gif-container">
+
+  <!-- Flowers -->
+  <img src="https://media.giphy.com/media/26FLdmIp6wJr91JAI/giphy.gif">
+
+  <!-- Chocolate Love -->
+  <img src="https://tenor.com/nJ5BEOKq8wc.gif">
+
+ </div>
+
+ <p style="opacity:.6">You deserve all the LOVE.</p>
+</div>
+
+
+<!-- SNOW + SCRIPT -->
+<script>
+function snow(){
+ const s=document.createElement("div");
+ s.className="snowflake";
+ s.textContent="❄";
+ s.style.left=Math.random()*100+"vw";
+ s.style.animationDuration=Math.random()*3+2+"s";
+ s.style.opacity=Math.random();
+ document.body.appendChild(s);
+ setTimeout(()=>s.remove(),5000);
+}
+setInterval(snow,200);
+
+/******** NAV *********/
+function goPage(n){
+ page1.classList.add("hidden");
+ page2.classList.add("hidden");
+ page3.classList.add("hidden");
+ document.getElementById("page"+n).classList.remove("hidden");
+ document.getElementById("page"+n).classList.add("fade-in");
+}
+
+/******** BLOW *********/
+function blow(){
+ f1.classList.add("flame-off");
+ f2.classList.add("flame-off");
+ f3.classList.add("flame-off");
+ blowBtn.style.display="none";
+ toLetter.classList.remove("hidden");
+ alert("🎉 Happy Birthday Akshita ❤️");
+
+ document.getElementById("bgMusic").play().catch(()=>{});
+}
+
+/******** LETTER *********/
+function openLetter(){
+ closedEnv.style.display="none";
+ openEnv.classList.remove("hidden");
+ openEnv.classList.add("fade-in");
+}
+</script>
+
+</body>
+</html>
